@@ -1,4 +1,3 @@
-// #### Transaction Class:
 class Transaction {
   constructor(amount, date) {
     this.amount = amount;
@@ -6,7 +5,6 @@ class Transaction {
   }
 }
 
-// #### Customer Class:
 class Customer {
   constructor(name, id) {
     this.name = name;
@@ -28,7 +26,6 @@ class Customer {
       //Remember The 0 passed as the second argument to the reduce method is the initial value of the balance variable
     }, 0);
   }
-
   addTransactions(amount) {
     if (amount > 0) {
       const newTransaction = new Transaction(amount, new Date());
@@ -40,7 +37,6 @@ class Customer {
     return false;
   }
 }
-
 class Branch {
   constructor(name) {
     this.name = name;
@@ -81,7 +77,6 @@ class Branch {
     return false;
   }
 }
-
 class Bank {
   constructor(name) {
     this.name = name;
@@ -120,9 +115,6 @@ class Bank {
     }
     return false;
   }
-
-
-  
   addCustomerTransaction(branch, customerId, amount) {
     if (this.checkBranch(branch)) {
       const branchCustomers = branch.getCustomers();
@@ -178,9 +170,6 @@ class Bank {
   
 }
 
-console.log(
-  "___Create Objects____________________________________________________"
-);
 const arizonaBank = new Bank("Arizona");
 const westBranch = new Branch("West Branch");
 const sunBranch = new Branch("Sun Branch");
@@ -188,52 +177,34 @@ const customer1 = new Customer("John", 1);
 const customer2 = new Customer("Anna", 2);
 const customer3 = new Customer("John", 3);
 
-console.log(
-  "___Add Branch____________________________________________________"
-);
-
+console.log("________________Add Branch________________");
 arizonaBank.addBranch(westBranch);
 arizonaBank.addBranch(sunBranch);
 arizonaBank.addBranch(westBranch);
 
-console.log(
-  "___Find Branch By Name____________________________________________________"
-);
+console.log("________________Find Branch By Name________________");
 arizonaBank.findBranchByName("bank");
 arizonaBank.findBranchByName("sun");
 
-console.log(
-  "__Add Customers_____________________________________________________"
-);
+console.log("________________Add Customers________________");
 arizonaBank.addCustomer(westBranch, customer1);
 arizonaBank.addCustomer(westBranch, customer3);
 arizonaBank.addCustomer(sunBranch, customer1);
 arizonaBank.addCustomer(sunBranch, customer2);
 
-
-console.log(
-  "___Add Customer Transaction____________________________________________________"
-);
+console.log("________________Add Customer Transaction________________");
 arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 3000);
 arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 2000);
 arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000);
 
-
-
-console.log(
-  "__Add Transaction_____________________________________________________"
-);
+console.log("________________Add Transaction________________");
 customer2.addTransactions(1000);
 customer1.addTransactions(-1000);
 
-console.log(
-  "__Get Balance_____________________________________________________"
-);
+console.log("________________Get Balance________________");
 console.log(customer1.getBalance());
 console.log(customer2.getBalance());
 
-console.log(
-  "__List Customers_____________________________________________________"
-);
+console.log("________________List Customers________________");
 arizonaBank.listCustomers(westBranch, true);
 arizonaBank.listCustomers(sunBranch, true);
