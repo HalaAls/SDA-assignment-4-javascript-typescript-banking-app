@@ -177,34 +177,35 @@ const customer1 = new Customer("John", 1);
 const customer2 = new Customer("Anna", 2);
 const customer3 = new Customer("John", 3);
 
-console.log("________________Add Branch________________");
+console.log("\n________________Add Branch________________\n");
 arizonaBank.addBranch(westBranch);
 arizonaBank.addBranch(sunBranch);
 arizonaBank.addBranch(westBranch);
 
-console.log("________________Find Branch By Name________________");
+console.log("\n\n________________Find Branch By Name________________\n");
 arizonaBank.findBranchByName("bank");
 arizonaBank.findBranchByName("sun");
 
-console.log("________________Add Customers________________");
+console.log("\n\n________________Add Customers________________\n");
 arizonaBank.addCustomer(westBranch, customer1);
 arizonaBank.addCustomer(westBranch, customer3);
 arizonaBank.addCustomer(sunBranch, customer1);
 arizonaBank.addCustomer(sunBranch, customer2);
 
-console.log("________________Add Customer Transaction________________");
+console.log("\n\n________________Add Customer Transaction________________\n");
 arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 3000);
 arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 2000);
 arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000);
 
-console.log("________________Add Transaction________________");
+console.log("\n\n________________Add Transaction________________\n");
 customer2.addTransactions(1000);
 customer1.addTransactions(-1000);
 
-console.log("________________Get Balance________________");
+console.log("\n\n________________Get Balance________________\n");
 console.log(customer1.getBalance());
 console.log(customer2.getBalance());
 
-console.log("________________List Customers________________");
+console.log("\n\n________________List Customers________________\n");
 arizonaBank.listCustomers(westBranch, true);
 arizonaBank.listCustomers(sunBranch, true);
+
