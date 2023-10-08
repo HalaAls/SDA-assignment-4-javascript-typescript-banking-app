@@ -30,10 +30,14 @@ class Customer {
     if (amount > 0) {
       const newTransaction = new Transaction(amount, new Date());
       this.transactions.push(newTransaction);
-      console.log(`${this.id}, ${this.name}'s transaction of ${amount} has been added successfully`);
+      console.log(
+        `${this.id}, ${this.name}'s transaction of ${amount} has been added successfully`
+      );
       return true;
-    } 
-    console.log(`${this.id}, ${this.name}'s transaction of ${amount} has been failed`);
+    }
+    console.log(
+      `${this.id}, ${this.name}'s transaction of ${amount} has been failed`
+    );
     return false;
   }
 }
@@ -103,8 +107,7 @@ class Bank {
         (c) => c.getId() === customer.getId()
       );
       if (!customerExist) {
-        branch.addCustomer(customer);
-        return true;
+        return branch.addCustomer(customer);
       }
       console.log(
         `Customer "${customer.getName()}" (ID: ${customer.getId()}) already exists in ${
@@ -122,10 +125,11 @@ class Bank {
         (customer) => customer.getId() === customerId
       );
       if (customer) {
-        customer.addTransactions(amount, new Date());
-        return true;
-      } else{
-        console.log(`Customer with ID ${customerId} does not exist in ${branch.getName()}`);
+        return customer.addTransactions(amount);
+      } else {
+        console.log(
+          `Customer with ID ${customerId} does not exist in ${branch.getName()}`
+        );
         return false;
       }
     }
@@ -148,7 +152,9 @@ class Bank {
     if (this.checkBranch(branch)) {
       const customerList = branch.getCustomers();
       customerList.forEach((customer) => {
-        console.log(`Customer Name: "${customer.getName()}" ID: "${customer.getId()}" at ${branch.getName()}.`);
+        console.log(
+          `Customer Name: "${customer.getName()}" ID: "${customer.getId()}" at ${branch.getName()}.`
+        );
         if (includeTransactions) {
           const transactions = customer.getTransactions();
           if (transactions.length > 0) {
@@ -167,7 +173,6 @@ class Bank {
       console.log("Branch does not exist.");
     }
   }
-  
 }
 
 const arizonaBank = new Bank("Arizona");
@@ -208,4 +213,3 @@ console.log(customer2.getBalance());
 console.log("\n\n________________List Customers________________\n");
 arizonaBank.listCustomers(westBranch, true);
 arizonaBank.listCustomers(sunBranch, true);
-
